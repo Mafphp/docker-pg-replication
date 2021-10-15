@@ -1,0 +1,16 @@
+version: '3'
+services:
+ pg_slave:
+  build: .
+  environment:
+   - REPLICATE_FROM=192.168.1.160
+   - REPLICATE_FROM_PORT=5499
+   - POSTGRES_USER=hamed
+   - POSTGRES_PASSWORD=123456
+   - POSTGRES_DB=hamed
+   - PG_REP_USER=rep
+   - PG_REP_PASSWORD=123456
+  volumes:
+    - './db-data:/var/lib/postgresql/data'
+  ports:
+    - 5439:5432
